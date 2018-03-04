@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en" >
+
+<head>
+  <meta charset="UTF-8">
+  <title>Phone Book by angularjs</title>
+  
+  
+  <link rel='stylesheet prefetch' href='https://apps.bdimg.com/libs/bootstrap/3.3.4/css/bootstrap.css'>
+
+      <link rel="stylesheet" href="css/style.css">
+
+  
+</head>
+
+<body>
+
+  <body ng-app="addrBook" ng-controller="myCtrl">
+    <div class="container">
+        <div class="panel panel-info">
+            <div class="panel-heading">           
+                <div class="panel-title">
+                <h3 class="text-center">Phone Book</h3>
+                                
+                </div>      
+            </div>
+            <div class="panel-body">
+            <form class="form-horizontal">
+                <div class="form-group has-info has-feedback">
+                    <label for="seacrh" class="col-sm-2 control-label">Search: </label>
+                    <div class="col-sm-5">
+                        <input type="text"  name="search" ng-model ="test" class="form-control">
+                        <span class="glyphicon glyphicon-search form-control-feedback"></span>                                            
+                    </div>
+                </div>
+            </form> 
+              <div class="table-responsive">
+                <table class="table table-striped">
+                  <thead>
+                    <tr>
+						<th>Id</th>
+                        <th>Contacts</th>
+                        <th>Phone Number</th>
+						<th>Email</th>
+						<th>DOB</th> 						 						
+						<th>Avatar</th> 
+						<th>Handle</th>
+                    </tr>
+                   </thead>
+                   <tbody>
+                    <tr ng-repeat="x in info | filter:test">
+						<td><span ng-hide="showMe($index)">{{x.id}}</span><input text="text"class="form-control input-sm" ng-model="x.id" ng-show="showMe($index)"></td>
+                        <td><span ng-hide="showMe($index)">{{x.name}}</span><input text="text"class="form-control input-sm" ng-model="x.name" ng-show="showMe($index)"></td>
+                        <td><span ng-hide="showMe($index)">{{x.phone}}</span><input text="text" class="form-control input-sm" ng-model="x.phone" ng-show="showMe($index)"></td>
+						<td><span ng-hide="showMe($index)">{{x.email}}</span><input text="text" class="form-control input-sm" ng-model="x.email" ng-show="showMe($index)"></td>	
+						<td><span ng-hide="showMe($index)">{{x.birthday}}</span><input text="text" class="form-control input-sm" ng-model="x.birthday" ng-show="showMe($index)"></td>	
+						<td><span ng-hide="showMe($index)"><img ng-src="{{x.avatar}}"></span><input text="text" class="form-control input-sm" ng-model="x.avatar" ng-show="showMe($index)"></td>							
+                        <td><a href="#" ng-click="removeItem()"><span class="glyphicon glyphicon-trash"></span>&nbsp;</a>/<a href="#" ng-click="change()" ng-hide="showMe($index)"> <span class="glyphicon glyphicon-edit"></span></a></a><a href="#" ng-click="save()" ng-show="showMe($index)">&nbsp;<span class="glyphicon glyphicon-ok"></span></a></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <div class="panel-footer">
+                <form class="form-inline">
+					<div class="form-group">
+                        <span>Id：</span>
+                        <input type="text" class="form-control" ng-model="newId" >
+                    </div> 
+                    <div class="form-group">
+                        <span>Name：</span>
+                        <input type="text" class="form-control" ng-model="newName" >
+                    </div>
+                    <div class="form-group">
+                        <span>Phone：</span>
+                        <input type="text" class="form-control" ng-model="newPhone" >
+                    </div> 
+					<div class="form-group">
+                        <span>Email:</span>
+                        <input type="text" class="form-control" ng-model="newEmail" >
+                    </div> 
+					<div class="form-group">
+                        <span>DOB:</span>
+                        <input type="text" class="form-control" ng-model="newBirthday" >
+                    </div> 
+					<div class="form-group">
+                        <span>Avatar：</span>
+                        <input type="text" class="form-control" ng-model="newAvatar" >
+                    </div> 
+                    <input type="button" class="btn btn-primary btn-sm" value="Add"ng-click="addItem()">       
+                </form>            
+            </div>
+        </div>   
+
+            
+    </div>
+  <script src='https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js'></script>
+
+  
+
+    <script  src="js/phonebook.js"></script>
+
+
+
+
+</body>
+
+</html>
